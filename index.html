@@ -1,2092 +1,565 @@
 <!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="一闭一睁，半世浮生。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="王乐江精神世界">
-<meta property="og:url" content="http://wanglejiang.win/index.html">
-<meta property="og:site_name" content="王乐江精神世界">
-<meta property="og:description" content="一闭一睁，半世浮生。">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="王乐江精神世界">
-<meta name="twitter:description" content="一闭一睁，半世浮生。">
-
-
-
-
-
-
-  <link rel="canonical" href="http://wanglejiang.win/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>王乐江精神世界</title>
-  
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王乐江 - Java后端开发工程师</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --accent: #3b82f6;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-title svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .edu-info h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .edu-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .edu-time {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .exp-company {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .exp-time {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .exp-position {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .exp-desc ul {
+            list-style: none;
+        }
+
+        .exp-desc li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-desc li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Projects */
+        .project-item {
+            margin-bottom: 1.25rem;
+            padding: 1.25rem;
+            background: var(--bg);
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: var(--bg);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .skill-name {
+            font-weight: 500;
+        }
+
+        .skill-level {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .star {
+            width: 16px;
+            height: 16px;
+        }
+
+        .star.filled {
+            color: #f59e0b;
+        }
+
+        .star.empty {
+            color: #e2e8f0;
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+                padding: 0;
+            }
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+            .header {
+                box-shadow: none;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            .name {
+                font-size: 2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            .exp-header {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            .education-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">王乐江精神世界</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-      
-        <p class="site-subtitle">闻道有先后</p>
-      
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home menu-item-active">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
-  </li>
-
-      
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/12/21/使用双拼输入法第三天/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/21/使用双拼输入法第三天/" itemprop="url">
-                  使用双拼输入法第三天
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-21 22:44:37" itemprop="dateCreated datePublished" datetime="2018-12-21T22:44:37+08:00">2018-12-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-22 00:18:55" itemprop="dateModified" datetime="2018-12-22T00:18:55+08:00">2018-12-22</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用双拼输入法第三天，说下感受。</p>
-<p>为什么第一二天不总结感受？因为字都打不出来谈个屁的感受。<br>这算是我第三次尝试双拼输入法了，前两次都可耻的失败了。<br>双拼输入法是啥？这么难？为啥要学？</p>
-<p>先解释一下双拼输入法。<br>一般的拼音输入法按字母录入拼音选汉字的叫全拼输入法，相对全拼输入法，把拼音的录入分为声母和韵母分别录入，就是双拼输入法了。<br>举例来讲，“霜降”这个词全拼【shuangjiang】双拼【uljl】。<br>说到举例，我看到网上有人用“中华人民共和国”来举例，说【zhuonghuarenmingongheguo】对比【vshxrfmbgshego】长太多……拜托，现在的智能全拼输入法用首字母【zhrmghg】就能打出“中华人民共和国”了，用【zsxmmhd】还能轻易打出“庄生晓梦迷蝴蝶”呢，这是全拼的长处，要承认全拼的优点。</p>
-<p>双拼方案。市面上有好几种双拼方案，不同的方案就是声母韵母映射的按键字母不同。我选了“小鹤双拼”，因为口碑好，别的我也不懂，毕竟我也是新手。</p>
-<p>双拼难在记韵母。声母除了zh,ch,sh之外其余本就是单个字母，对应原本的按键，韵母除了单字符韵母以外，还有30个多字符韵母，就这30个韵母的键位老记不住。<br>体验上可以说像极了当年小学一二年级刚学打字的时候，盯着键盘找键位，憋得不要不要的。前两次就在这一步实在受不了就放弃了。这次算是坚持下来了，你看我打这么多字就知道，3天差不多算入门了。</p>
-<p>我主力设备有公司的电脑、自己的电脑和手机，从这次第一天切换输入法开始，就3台全部换成了双拼，桌面置顶了一个小鹤双拼的键盘映射截图。好不容易才撑过了3天。期间最大的感触是“为什么要折磨自己？躺舒适区不好吗？”</p>
-<p>今天先写到这，打这么多字主要还是为了熟悉键位。过几天再写后续感受。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/11/28/心理建设/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/28/心理建设/" itemprop="url">
-                  心理建设
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-28 07:41:47" itemprop="dateCreated datePublished" datetime="2018-11-28T07:41:47+08:00">2018-11-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-29 08:21:26" itemprop="dateModified" datetime="2018-11-29T08:21:26+08:00">2018-11-29</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>心理建设是什么？我之前发过一篇朋友圈：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对消费怎么做心理建设：今年10月个税起征点提高导致到手工资多了几百，招行信用卡12期免息分期每个月只出几百，前后抵消这不白送吗！我真是个心理建设小能手，不，是心理建设小能，手已经被剁了。</span><br></pre></td></tr></table></figure>
-<p>这就是一个标准的心理建设过程。<br>心理建设就是把 事情/决定/境遇 在自己内心合理化，让自己减轻心理负担，让自己觉得这是理所当然的事。<br>说通俗一点就是为 事情/决定/境遇 找个合理的借口，让自己过了自己这一关，让自己内心好受一点。</p>
-<p>心理建设强的人，即可能是“好人”，说服自己做的事情是伟大光明正义的；也可能是“坏人”说服自己真的没得选，错的不是我，是这个世界。<br>但共同点就是，心理建设强的人，普遍有很强的执行力，因为用于处理犹豫的时间和精力少了，不由分说就是干。</p>
-<p>内心世界是一个自己引导自己的过程，随着年岁经历的成长，学会各种调整，但这也是一项需要刻意学习和训练的技能。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/11/14/养狗带来的生活变化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/14/养狗带来的生活变化/" itemprop="url">
-                  养狗带来的生活变化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-14 07:00:17 / Modified: 07:27:06" itemprop="dateCreated datePublished" datetime="2018-11-14T07:00:17+08:00">2018-11-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>嘟嘟来了有3周了，生活变化很大。</p>
-<p>嘟嘟来之前，我们生活日复一日逐渐平淡，加上工作上没有激情，生活也跟着渐露疲态。<br>这时候嘟嘟来了。<br>不得不说一开始是手忙脚乱的。<br>狗笼子、狗盘、狗绳什么的肯定是一早就买好了。但是怎么泡狗粮还是现学的。突然生活有了激情，有了盼头。每天都想着见嘟嘟，跟它玩跟它闹。<br>大小便是个头疼的问题，完全不知道怎么训练。看了很多网上的训练方法，对嘟嘟也无效。<br>或许是嘟嘟太小了，才两个多月。总之我是这么安慰自己的。如果换做是个人，2个多月啥都不懂挺正常。这么一想，我就宽容多了。之前每天都要打几次，后来收手很多，尽量不打，但有时候还是会忍不住……<br>打狗这个事，容易打急眼了，打暴躁了，反正是狗，又不是人，打狗是为了教育它，是为它好。当对自己这么说的时候就会失去暴力的心理负担，然后会呈现出自己最暴力恐怖的一面。这一点是我以前没有想到的。当我意识到那种年幼时候的戾气复现的时候，着实吓了自己一跳。立刻就把情绪压制下去了，然后开始反思自己。</p>
-<p>今天6点就起床了，喂狗遛狗全部搞定之后还不到7点。这对之前那个爱睡懒觉的我来说，简直不可想象。<br>我总结了一下，为什么自己变化那么大。主要还是责任心吧，毕竟是个生命，不能让它饿急了，憋坏了，抑郁了。</p>
-<p>养狗也是对自己的一种修行。也当提前训练养娃了吧。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/11/07/梦境——又梦见奶奶了/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/梦境——又梦见奶奶了/" itemprop="url">
-                  梦境——又梦见奶奶了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-07 12:15:08 / Modified: 12:19:38" itemprop="dateCreated datePublished" datetime="2018-11-07T12:15:08+08:00">2018-11-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>又梦见奶奶了。</p>
-<p>梦中她拄着两根拐杖，在一个空旷的客厅，我看到她就冲过去抱她，然后她站不稳就要摔倒了，感觉跟碰瓷一样，然后我赶紧扶稳了她。感觉奶奶身体很轻，明明胖胖的，居然还很轻。<br>老婆坐在奶奶背后的沙发上。<br>奶奶悄悄的问我：“那个人是哪个？”<br>我说：“是你的孙儿媳妇，我老婆。”<br>奶奶一脸疑惑的说：“你都结婚了啊？”<br>我没有说话，本来想说“我们的说婚礼你都在啊”，但是一直想不出婚礼上她在的场景，于是没有说出口。醒来才想起那时候她已经不在了。<br>梦里这个场景还是突然的难过，总觉得奶奶有点老年痴呆了吧，我结婚这么大的事都忘了。其实是想起了奶奶晚年健忘的事，其实应该也不算老年痴呆吧。<br>奶奶接着说：“结婚了啊，那我拿点钱给你吧。右手开始掏钱，左手招呼老婆过来。”<br>我突然好感动，心理想着不用，但也没有说出口，然后看到老婆乐呵呵的跑过来。<br>这里想到了奶奶还在的时候，我最后一次要离开家出去工作了，奶奶招呼我爸要给我3000块钱，我拒绝不了，说什么都要给我，梦里变成了塞钱给我老婆。<br>老一辈的观念里面，这个是必须的，这种理所当然的来自奶奶的亲切感，已经逝去好久了。<br>梦里我都快哭了。</p>
-<p>起床，喂狗，遛狗，上班。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/10/22/终于有狗了/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/22/终于有狗了/" itemprop="url">
-                  终于有狗了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-22 21:38:48 / Modified: 22:30:45" itemprop="dateCreated datePublished" datetime="2018-10-22T21:38:48+08:00">2018-10-22</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>老婆朋友的柯基生了一窝狗崽子，送了我们一只。<br>取名叫嘟嘟，为什么叫嘟嘟呢，因为以后我们的小孩叫小胖，然后小胖嘟嘟是个组合。<br>云养了两个多月，终于从沈阳空运来了成都。昨天中午我们去机场接嘟嘟，刚见到面就拉了屎。然后闻到好臭啊，心想以后要一直这么臭可怎么办。回来把下面的尿垫子换了之后就不那么臭了，味道也还好。</p>
-<p>老婆从小就想养狗，一直未能如愿。之前我们还考虑过到底是想养斗牛还是八哥还是柯基，斗牛凶起来有点太凶了，八哥长大之后丑了点，不过也能接受，柯基又帅又乖萌，恰好有机会，这下终于如愿了。</p>
-<p>我们想象不出有狗了是个怎样的情景，现在够来了，养了两天，手忙脚乱。</p>
-<p>狗拉屎之后是会吃掉的……这个据说是无解，我们只有看到之后按住它，然后把屎处理干净。到处拉屎拉尿是刚开始养狗时最大的问题了，这个只能慢慢训练，一旦训练好了就好了。<br>出门遛狗也格外需要注意，外面行人车辆很多，稍不注意就送命了，今天晚上出门就被踢了一脚，叫了几声，有点心疼，不过也没多大问题。<br>昨晚半夜还叫了几声，起来看发现拉了屎，估计也想吃东西了，结果只是把屎处理干净了，直到早上才给的狗粮。早上一般我们都睡到8点出头，起不来床，结果今天早上6:50狗叫就起床了，感觉有了责任，跟养个小孩似的。<br>嘟嘟在房间里是相当有活力，房间小也不妨碍它跑的欢。结果领出门之后真的就怂得像只狗，没见过世面不敢跑，走也是畏畏缩缩的。这一点也像个小孩，据说很多小孩都是家里横，出门怂如狗……</p>
-<p>不管怎么说把，来了我家了，成了家庭成员，就要跟我们相伴走下去，未来路很长，希望以后能照顾好我的娃。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/10/14/永远多远/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/14/永远多远/" itemprop="url">
-                  永远多远
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-14 22:30:36 / Modified: 23:14:10" itemprop="dateCreated datePublished" datetime="2018-10-14T22:30:36+08:00">2018-10-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>说道“永远”这个事就很有意思了，好比租和买，好比有限流量套餐和无效流量套餐，“无限”和“永远”都有一种魔力，是一种自由和奔放的幻觉。</p>
-<p>先说结论，“永远”是有时间限制的。</p>
-<p>听过这么一个灵魂拷问：<br>给猴子一个键盘，猴子以每秒一下的速度敲击键盘，假设敲击时间为无限。那么理论上敲击的内容也应该是无限的。那么敲击结果集里面必然会存在一部《红楼梦》，那么猴子“写”出来的《红楼梦》有没有艺术价值？</p>
-<p>引人深思，发人深省，有没有。<br>我看到一个解释说：这是不可能的，哪怕敲出“To be, or not to be, that is a question.”这句话都要上万亿年，而且每增加一个字母都是指数级的增长，敲出一个著作所花的时间远比宇宙的寿命大得多的多。所以这个假设在数学上存在，但在物理上不存在。</p>
-<p>所以，哪儿有什么永远？我们说的“永远”最远最远也就到宇宙寿命的终结。<br>真要是我们常说的“永远”是宇宙寿命的长度，当然对于人来说也就相当于真实意愿上的“永远”了。<br>慢着，看看上面那句话，其实我们关系的并不是真实意愿上的永远，而是我们自身寿命长度来说的永远吧？那么分歧出现了，这个寿命到底是你的寿命还是我的寿命？是公司的寿命还是制度的寿命？这个期限一下就模糊了……</p>
-<p>“我爱你，到永远”结婚的时候我跟我老婆吐露心声。我说的这个永远，应该也就到生命结束，意识消失。那之后呢？之后不重要了，我消失之后就不能以任何物理方式影响这个世界了，讨论之后的事已经没有意义了。</p>
-<p>这个手机，我租下来可以使用一段时间，我就永远拥有它了吗？没有，我买下来其实也是使用一段时间，只是用坏了，然后扔了而已。衣服、裤子、鞋子同理。</p>
-<p>看到没有，“永远”可能很短。<br>“一转身就是一辈子，一眨眼就是永远。”在某些时候并不只是抒情，可能就是在描述现实。</p>
-<p>作为开发人员，经常产品经理说这个地方肯定不会改的，永远不改，后来他离职了……</p>
-<p>所以永远不要相信“永远”，永远不要被“永远”所迷惑，你的永远不一定是我的永远。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/10/09/国庆出行雷凌的表现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/国庆出行雷凌的表现/" itemprop="url">
-                  国庆出行混雷的表现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-09 23:50:05" itemprop="dateCreated datePublished" datetime="2018-10-09T23:50:05+08:00">2018-10-09</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-10 00:08:36" itemprop="dateModified" datetime="2018-10-10T00:08:36+08:00">2018-10-10</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="再说说这次出行混雷的表现"><a href="#再说说这次出行混雷的表现" class="headerlink" title="再说说这次出行混雷的表现"></a>再说说这次出行混雷的表现</h3><p>底盘比suv还是差点意思，没注意踩个大坑拖底一次，前左侧底盘脱了点皮其余没问题。<br>第一天基本都在上坡，油耗超高达到了惊人的5.6L/100km，后来下坡油耗为负（发动机不启动还把电池充满了）又把之前的油耗降下来了，综合油耗不好算，总之就是8元一升的油价总共加了300块钱的油跑了将近1000km还是够意思了。<br>后备箱小，还好我们车3个人是够用，再多就拮据了。<br>下坡用动能回收s6档基本可以不踩刹车，松开油门就有个减速效果，也可以用s1档锁档，效果类似于手动挡车型1档限速。有效避免了刹车损耗和刹车片过热可能导致的刹车失灵。<br>当然也给后车错觉“卧槽前车是刹车灯坏了吧陡坡+急弯他不踩刹车难道要打算漂移？”<br>哈哈很有乐趣的车，如果没有混动系统我一个人开下来肯定累的不行了，全靠乐趣降低了驾驶疲劳。</p>
-<p>虽然路上左前脸被大哥汉兰达怼了个坑，但修复的毫无痕迹，跟新的一样，小哥技术简直棒。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/10/05/国庆4天自驾游/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/国庆4天自驾游/" itemprop="url">
-                  国庆4天自驾游
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-05 07:36:29" itemprop="dateCreated datePublished" datetime="2018-10-05T07:36:29+08:00">2018-10-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-09 23:46:44" itemprop="dateModified" datetime="2018-10-09T23:46:44+08:00">2018-10-09</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>其实是没有准备的，明知道国庆去哪儿都人多，去哪儿都堵，为什么还要出去浪？<br>我提议说国庆加班，然后国庆过了之后再请假一周出去玩。<br>老婆表示不行，看着别人在外面浪自己在上班受不了。<br>我也表示理解，总之一开始只是想国庆出去玩，又不想累，不想规划，怎么办呢？<br>这时候朋友提议自驾游，我立刻响应。整个群说来说去，最后只有我和卢明两个阵营出发。<br>卢明那边是两家人两辆车，而且是有经验的亲戚带一条不堵的路，房间什么的临时再找，我就无脑跟。</p>
-<p>事实证明我的无脑跟也太无脑了……下文慢慢讲……</p>
-<h3 id="Day1-乐山-gt-宝兴县-gt-神木垒-gt-夹金山-gt-大营盘"><a href="#Day1-乐山-gt-宝兴县-gt-神木垒-gt-夹金山-gt-大营盘" class="headerlink" title="Day1 乐山 -&gt; 宝兴县 -&gt; 神木垒 -&gt; 夹金山 -&gt; 大营盘"></a>Day1 乐山 -&gt; 宝兴县 -&gt; 神木垒 -&gt; 夹金山 -&gt; 大营盘</h3><p>约好了6:30出发，结果由于楼下包子铺没有开，开车去张公桥吃的包子。<br>发现公司群里有信息，怕工作上有东西需要我处理，结果回了趟家把电脑拿上了，苦逼啊。</p>
-<p>卢明两家人6:30准时出发了，我们从雅安下了告诉，在去往宝兴县的路上某个小镇碰的头。<br>相互介绍了同行的成员，然后正式开始赶路。</p>
-<p>到了宝兴县我们去了神木垒。由于下着小雨，景点都看的不痛快。<br>听说丛林里平时都有小动物的，结果就只看到了小猪和小羊。<br>之前去过最高的就是峨眉山金顶3077米。神木垒海拔3000米已经和我去过最高的地方齐平了。<br>结果爬山太快，身体平时也没有锻炼，从这里开始就有点气喘吁吁，头有点痛了。<br>一开始我觉得没什么，休息一下就好了，哪知道这才是开始。<br>下山的时候，地是湿的，我穿的又是网鞋，立刻就湿透了，再加上头疼，就开始很不舒服了。</p>
-<p>找了个地方吃饭，卢明的小嬢家带了电吹风，我把鞋子吹干了。暗自反思准备工作做的不够，下次记住：</p>
-<ol>
-<li>不能穿网状的鞋出去旅游</li>
-<li>记得带电吹风</li>
-</ol>
-<p>翻了海拔4000多的夹金山。确实有点高反，加上起床太早了特别困，加上衣服带少了特别冷，加上没有提前买红牛或者咖啡什么的提供能量的饮料。旅途从这里开始难过起来。不过雪山的景色还是很美的。<br>山上有雾，大家都把雾灯+双闪打开行驶。</p>
-<p>前面两辆车都是两个人换着开的，唯独我这辆是我自己开的，我爸不会开，老婆平时也没开过，山路更不敢给她开。前面的卢明看我摇摇欲坠，就主动停下来拯救我。我让位了，结果他不熟悉我雷凌双擎的车况，没多久就把我爸开吐了，然后差点也把我开吐了，我感觉让他停下，换我继续开。</p>
-<p>翻过夹金山已经精疲力尽了，时间也差不多到晚上了。我们大概在大营盘附近落脚的。疲惫的一天。</p>
-<h3 id="Day2-四姑娘山-双桥沟-gt-小金县-gt-丹巴县"><a href="#Day2-四姑娘山-双桥沟-gt-小金县-gt-丹巴县" class="headerlink" title="Day2 四姑娘山-双桥沟 -&gt; 小金县 -&gt; 丹巴县"></a>Day2 四姑娘山-双桥沟 -&gt; 小金县 -&gt; 丹巴县</h3><p>一早就去了双桥沟，其实很近，开车几分钟就到了。<br>买了票坐旅游大巴上山，据说开了30多公里，又是4000海拔左右，上去我和我爸都不舒服。<br>匆匆拍了点照就坐车下行了。<br>双桥沟是坐大巴直接到顶，然后再坐大巴一站一个景点的往下坐。<br>每到一个景点可以下车下去游玩，完了随时可以坐后面的车继续下到下一站。<br>我们在这里拍到了整个旅途最美的照片。<br>我爸还是成功的吐了，我差点也吐了，最终还是坚持住了。</p>
-<p>下山之后没什么吃的，随便吃了碗泡面土豆什么的，就出发了。</p>
-<p>据说小金县的苹果便宜又好吃，买了几斤。</p>
-<p>路上查地图，丹巴的人不少，怕没有地方住，结果就在小金到丹巴的中途住下了。<br>住的地方电压低，热水只有储备的，用完就不容易烧热了，后来干脆停了电。<br>为了老婆和老爸洗澡，结果搞到很晚才睡，以后要注意选住处了。<br>这一天没开多久的路，高反依然难受。</p>
-<h3 id="Day3-丹巴美人谷-gt-新都桥-gt-不知名小镇"><a href="#Day3-丹巴美人谷-gt-新都桥-gt-不知名小镇" class="headerlink" title="Day3 丹巴美人谷 -&gt; 新都桥 -&gt; 不知名小镇"></a>Day3 丹巴美人谷 -&gt; 新都桥 -&gt; 不知名小镇</h3><p>在丹巴县城里面车前杠被调头的汉兰达屁股撞了，跟对方司机加了微信。<br>翻了一座小山，路过新都桥，真漂亮。<br>这一路真的诠释了终点不是目的，路过的才是人生。<br>本来打算往康定方向走，结果折多山因为大雪被封了。<br>堵了很长，我们立刻就拐弯走了旁边空空如也的小路。<br>来到了一个不知名的小镇住下，也没啥菜就抓了只老板的鸡来炖了，480还是有点贵。<br>海拔3400左右，头还是痛，而且因为冷变得越来越痛。<br>门口路上瞎晃了一下拍了点照片，就在大厅坐着了。<br>停电没有电……老板有发电机，但仅仅能供大厅点灯，说7点能来点也没有来。<br>热水是不可能的了，连灯都不可能，点了根蜡烛进房间，头痛的厉害早早睡了。</p>
-<h3 id="Day4-不知名小镇-gt-康定-gt-乐山"><a href="#Day4-不知名小镇-gt-康定-gt-乐山" class="headerlink" title="Day4 不知名小镇 -&gt; 康定 -&gt; 乐山"></a>Day4 不知名小镇 -&gt; 康定 -&gt; 乐山</h3><p>不知名小镇卢明他们家亲戚来过，说这个方向继续走到某山上风景很美，我们7点出发。<br>路上只有我们三辆车，除此之外就是牦牛了。<br>走了有十几公里吧，下的雨变成雪结成冰了。<br>前车停了，我跟着刹车竟然触发了ABS防抱死制动系统。<br>大家心照不宣立刻调头回去，太危险了，冰路爬山不是儿戏。<br>回答小镇正好是8点，面馆开门了，来了碗牛肉面，还不错。<br>原路回到了前一天堵的地方，不堵了，折多山也能走了。<br>四面雪山真的太美了，翻折多山的一截路还是有点堵。<br>海拔4300多，头还是隐隐不舒服，不过比前些天好多了。<br>由于前一天停电的缘故没有洗澡，也没有睡好，原本打算住康定的，想想还是直接回乐山好。<br>康定买了点牦牛肉，出发，路上找个店吃了午餐，就踏上归途了。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>国庆走了这条冷门的路线真爽，不堵就是最爽的，简直棒！<br>无脑跟简直太无脑了。<br>以后出行要提前查查温度、查查海拔，带好衣服、氧气瓶、电吹风雨衣鞋套什么的，做足准备。<br>第一次自驾游，第一次和爸爸出来玩，看得出来爸爸一路上太开心了。</p>
-<p>还是家里好，还是城市生活好。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/09/20/梦境——《我生在此时》/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/20/梦境——《我生在此时》/" itemprop="url">
-                  梦境——《我生在此时》
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-09-20 07:25:27" itemprop="dateCreated datePublished" datetime="2018-09-20T07:25:27+08:00">2018-09-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-11-07 12:14:40" itemprop="dateModified" datetime="2018-11-07T12:14:40+08:00">2018-11-07</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2018年9月10日，梦见奶奶转世了。</p>
-<p>我走在大街上手机响了，奶奶打过来的，说了一些什么电影院啊什么的，我一口气问了很多问题，你在哪里？那边怎么样？还是不能说？要等我到了那个世界才能知道？（在梦里我也知道奶奶不在这个世界了）奶奶没有回答我，电话里面没声音，一会儿电话就断了。然后我收到了两条短信，短信内容已经不记得了。记得当时我在一所商场里面正在往外走。周围有放歌的声音。<br>场景切换，傍晚我走到一个小区门口，一袭白衣的青年男子拿着麦克风在唱歌。麦克风接的是整栋大楼的音响，为什么大楼有音响我也不知道，当时还觉得挺高级的，同时也在想，这样不扰民吗。街上几乎没什么人，当然也没有观众/听众，只有对面楼有个人在专心听他唱，还对他挥手。我像路人一样走过，看到他看见有人跟他挥手，他唱的更起劲了。唱的歌我没有在现实世界听过，没有很惊艳也没有很烂，就是很平常的歌。<br>时间切换，好像是几年之后，还是这个地方。好像办了一个挺大的综艺节目，载歌载舞，还是这个白衣青年，不同的是这个舞台好绚丽，好多人伴舞。这个青年唱的歌好像不一样了，很振奋人心，旋律和情绪起伏也比之前亮眼，我都感觉自己沸腾了。主持人的介绍大概说这个歌手就是从这里出道诞生的，感觉已经变成了天王巨星，然后这首歌的名字叫《我生在此时》。听到歌名的我差点哭出来了，我想这预示着我奶奶转世了吧。</p>
-<p>梦醒之后，梦的很多细节都忘了，而且记住的部分也以极快的速度在忘却。我立刻拿起旁边的手机，记录下了能记住的部分。《我生在此时》这首歌的歌词已经记不住了，旋律记住了一小段，哼到了语音备忘录里面。看看有生之年能不能真的听到这首歌，看到这个白衣青年。</p>
-<p>我把这个梦讲给老婆听，她说她都起鸡皮疙瘩了，我说我又何尝不是。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wanglejiang.win/2018/09/05/我从这件事之后就不怕鬼了/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="王乐江">
-      <meta itemprop="description" content="一闭一睁，半世浮生。">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王乐江精神世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/05/我从这件事之后就不怕鬼了/" itemprop="url">
-                  我从这件事之后就不怕鬼了
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-09-05 23:14:32 / Modified: 23:15:25" itemprop="dateCreated datePublished" datetime="2018-09-05T23:14:32+08:00">2018-09-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>小时候家里爱看恐怖片，僵尸丧尸恶鬼恐龙什么的，可谓童年阴影，小时候的我又怕又想看，晚上天天做噩梦。后来有一天经历了一件事就再也不怕了。今天详细讲讲这个心路历程。</p>
-<p>百度百科上是这么定义鬼的：</p>
-<p>某些宗教或迷信的人认为人死后有“灵魂”，称之为“鬼”。科学研究表明，鬼魂只存在于人们的大脑里，科学家经过大规模科学调查后，得出结论：“鬼”是不存在的，“闹鬼”都是环境和心理作用造成。<br>其实这里可以分类讨论一下：</p>
-<p>鬼是存在的 如果鬼是存在的，鬼要么没有实体，要么有实体。如果没有实体，你根本就不必怕他，如果有实体意味着你也可以对它产生影响，如果你也能伤害它，那谁怕谁呢？</p>
-<p>鬼是不存在的 如果鬼不存在，只是“环境和心理作用造成的心理作用”，那要解决的问题就是心理问题了，需要做一个强大的心理建设。如果它只出现在自己的脑子里，严格来讲它就是自己的一部分，我为什么要怕自己？</p>
-<p>还有一种心理建设方式：我从小学了这么多年基础科学，宇宙应该是符合科学规律的，出现任何的状况应该都可以用科学来解释，如果出现了无法解释的东西只可能说是现有的科学还不够发达不能做解释。但如果真的出现了“超自然现象”那还玩个屁，这相当于考试的时候有人公然作弊，那还考个屁，相当于时间都会崩溃了。天塌了有个高的撑着，对应世界的瓦解来说我个人怎么样其实无所谓了，还有什么好怕的。</p>
-<p>理论归理论，但让我真正开始不怕鬼其实是因为下面这件事。</p>
-<p>忘记是初中还是高中了，一天晚上照例还是梦见鬼了。梦见我在家里，家里来了一只红色骷髅头的鬼一直向我走来，我一直往后退，退到衣柜与墙的角落了。红头骷髅居然开口说话了，这好像是第一次梦里的鬼开口说话，他低声问我：“怕不怕？” 这句话好像是点燃了心中的怒火，把心中的恐惧完全转化为了愤怒，然后我开始了绝地反击。“怕你妈逼！怕你妈逼！”我一边吼叫一边把他给暴打了一顿，把从小到大的胆怯和郁闷都发泄出来了。 把鬼打到之后发现，我已经不是当初那个弱小的我了，鬼也不过如此。</p>
-<p>从此以后再也没有梦见过鬼。 还有，我以后也尽可能不给小孩看恐怖片/恐怖画面。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">王乐江</p>
-              <p class="site-description motion-element" itemprop="description">一闭一睁，半世浮生。</p>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">23</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">王乐江</h1>
+                <p class="title">Java 后端开发工程师</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <a href="mailto:86416185@qq.com">86416185@qq.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <span>187-8228-8339</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span>成都</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        <a href="https://github.com/wanglejiang" target="_blank">GitHub</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        <a href="https://blog.wangleljiang.top" target="_blank">博客</a>
+                    </div>
                 </div>
-              
+            </div>
+        </header>
 
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
+        <!-- Education -->
+        <section class="card">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                教育背景
+            </h2>
+            <div class="education-item">
+                <div class="edu-info">
+                    <h3>西华大学</h3>
+                    <p>本科 · 电气工程</p>
                 </div>
-              
-            </nav>
-          
+                <span class="edu-time">2015.09 - 2019.06</span>
+            </div>
+        </section>
 
-          
+        <!-- Experience -->
+        <section class="card">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                工作经历
+            </h2>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">四川省互连企创科技有限公司</span>
+                    <span class="exp-time">2022.04 - 2024.09</span>
+                </div>
+                <p class="exp-position">Java 后端开发</p>
+                <div class="exp-desc">
+                    <ul>
+                        <li>负责公司中间件产品的后端研发</li>
+                        <li>负责公司内部Spring Cloud微服务架构的搭建和维护</li>
+                        <li>负责内部Redis集群、RabbitMQ集群的搭建和维护</li>
+                        <li>负责DevOps CI/CD流程的优化和落地</li>
+                        <li>熟练掌握分布式架构和中间件开发，有丰富的高并发、高可用系统经验</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">四川智享生物医药有限公司</span>
+                    <span class="exp-time">2019.07 - 2022.04</span>
+                </div>
+                <p class="exp-position">Java 后端开发</p>
+                <div class="exp-desc">
+                    <ul>
+                        <li>参与Spring Cloud微服务开发</li>
+                        <li>熟悉分布式架构和中间件开发</li>
+                        <li>掌握Spring Boot/Mybatis/MySQL/Redis/RabbitMQ技术栈</li>
+                        <li>负责企业内部信息管理系统的开发</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-          
+        <!-- Projects -->
+        <section class="card">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                个人项目
+            </h2>
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-name">个人博客</span>
+                    <a href="https://blog.wangleljiang.top" target="_blank" class="project-link">
+                        访问 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                    </a>
+                </div>
+                <p class="project-desc">使用 Vuepress2 + Vite + TypeScript 构建，部署于阿里云ESC，使用Docker进行部署</p>
+            </div>
+            <div class="project-item">
+                <div class="project-header">
+                    <span class="project-name">分布式责任链框架</span>
+                    <a href="https://github.com/wanglejiang/chain" target="_blank" class="project-link">
+                        GitHub <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+                    </a>
+                </div>
+                <p class="project-desc">责任链框架，支持同步/异步/过滤/拦截/熔断/降级等特性，支持注解配置，零外部依赖</p>
+            </div>
+        </section>
 
-          
-          
-
-          
-          
-
-          
-            
-          
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
+        <!-- Skills -->
+        <section class="card">
+            <h2 class="card-title">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                专业技能
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-name">Java</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Spring Boot</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Spring Cloud</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">MySQL</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Redis</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">RabbitMQ</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Docker</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">HTML/CSS/JS</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span class="skill-name">Vue</span>
+                    <div class="skill-level">
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">王乐江</span>
-
-  
-
-  
-</div>
-
-
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
-
-
-
-  
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 </body>
 </html>
