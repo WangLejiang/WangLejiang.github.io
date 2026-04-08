@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>王乐江 - Java开发工程师</title>
+    <title>王乐江 - 简历</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         :root {
             --primary: #2563eb;
@@ -32,182 +33,69 @@
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
         }
 
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: 1rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.05em;
-        }
-
-        .title {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .contact-item a:hover {
-            opacity: 0.8;
-        }
-
-        /* Cards */
-        .card {
+        /* Markdown Content Styles */
+        .resume-content {
             background: var(--card-bg);
             border-radius: 1rem;
-            padding: 1.75rem;
-            margin-bottom: 1.5rem;
+            padding: 2.5rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
         }
 
-        .card-title {
+        .resume-content h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .resume-content h2 {
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--primary);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
         }
 
-        .card-title svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Education */
-        .education-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .edu-info h3 {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .edu-info p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .edu-time {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        /* Experience */
-        .experience-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 0.75rem;
-        }
-
-        .exp-company {
+        .resume-content h3 {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text);
-        }
-
-        .exp-time {
-            color: var(--secondary);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        .exp-position {
-            color: var(--primary);
-            font-weight: 500;
+            margin-top: 1.25rem;
             margin-bottom: 0.5rem;
         }
 
-        .exp-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            padding-left: 1rem;
-            border-left: 3px solid var(--accent);
+        .resume-content p {
+            margin-bottom: 0.75rem;
+            color: var(--text);
         }
 
-        .exp-desc ul {
+        .resume-content ul {
             list-style: none;
+            margin-bottom: 1rem;
         }
 
-        .exp-desc li {
+        .resume-content li {
             position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.4rem;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .exp-desc li::before {
+        .resume-content li::before {
             content: '•';
             position: absolute;
             left: 0;
@@ -215,107 +103,46 @@
             font-weight: bold;
         }
 
-        /* Projects */
-        .project-item {
-            margin-bottom: 1.25rem;
-            padding: 1.25rem;
-            background: var(--bg);
-            border-radius: 0.75rem;
+        .resume-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .resume-content th,
+        .resume-content td {
             border: 1px solid var(--border);
+            padding: 0.75rem;
+            text-align: left;
         }
 
-        .project-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-name {
+        .resume-content th {
+            background: var(--bg);
             font-weight: 600;
-            font-size: 1.05rem;
         }
 
-        .project-link {
+        .resume-content a {
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
         }
 
-        .project-link:hover {
+        .resume-content a:hover {
             text-decoration: underline;
         }
 
-        .project-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--secondary);
         }
 
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1rem;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.75rem 1rem;
-            background: var(--bg);
-            border-radius: 0.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .skill-name {
-            font-weight: 500;
-        }
-
-        .skill-level {
-            display: flex;
-            gap: 0.25rem;
-        }
-
-        .star {
-            width: 16px;
-            height: 16px;
-        }
-
-        .star.filled {
-            color: #f59e0b;
-        }
-
-        .star.empty {
-            color: #e2e8f0;
-        }
-
-        /* Print */
-        @media print {
-            body {
-                background: white;
-            }
-            .container {
-                max-width: 100%;
-                padding: 0;
-            }
-            .card {
-                box-shadow: none;
-                border: 1px solid #ddd;
-                page-break-inside: avoid;
-            }
-            .header {
-                box-shadow: none;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+        .error {
+            text-align: center;
+            padding: 3rem;
+            color: #dc2626;
+            background: #fef2f2;
+            border-radius: 1rem;
         }
 
         /* Mobile */
@@ -323,180 +150,47 @@
             .container {
                 padding: 1rem;
             }
-            .name {
-                font-size: 2rem;
+            .resume-content {
+                padding: 1.5rem;
             }
-            .contact-info {
-                flex-direction: column;
-                gap: 0.75rem;
+            .resume-content h1 {
+                font-size: 1.75rem;
             }
-            .header {
-                padding: 2rem 1.5rem;
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: white;
             }
-            .exp-header {
-                flex-direction: column;
-                gap: 0.25rem;
-            }
-            .education-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            .project-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+            .resume-content {
+                box-shadow: none;
+                border: 1px solid #ddd;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <h1 class="name">王乐江</h1>
-                <p class="title">Java开发工程师</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        <a href="mailto:wlj_20001028@163.com">wlj_20001028@163.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                        <span>181-8142-6695</span>
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>四川成都</span>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Education -->
-        <section class="card">
-            <h2 class="card-title">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-                教育背景
-            </h2>
-            <div class="education-item">
-                <div class="edu-info">
-                    <h3>四川大学锦江学院</h3>
-                    <p>本科 · 计算机科学与技术</p>
-                </div>
-                <span class="edu-time">2021.09 - 2025.06</span>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section class="card">
-            <h2 class="card-title">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                项目经历
-            </h2>
-            <div class="project-item">
-                <div class="project-header">
-                    <span class="project-name">在线OJ判题系统</span>
-                </div>
-                <p class="project-desc">前后端分离判题系统，支持用户注册登录、题库管理、在线编程、提交判题</p>
-            </div>
-            <div class="project-item">
-                <div class="project-header">
-                    <span class="project-name">图书借阅管理系统</span>
-                </div>
-                <p class="project-desc">前后端分离管理系统，支持图书管理、用户管理、借阅管理、图书检索</p>
-            </div>
-        </section>
-
-        <!-- Skills -->
-        <section class="card">
-            <h2 class="card-title">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-                专业技能
-            </h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <span class="skill-name">Java</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Spring Boot</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">MySQL</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Redis</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">HTML/CSS/JS</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Vue</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Git</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-                <div class="skill-item">
-                    <span class="skill-name">Linux</span>
-                    <div class="skill-level">
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <svg class="star empty" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id="app" class="loading">加载中...</div>
     </div>
+
+    <script>
+        async function loadResume() {
+            const app = document.getElementById('app');
+            try {
+                const res = await fetch('resume.md');
+                if (!res.ok) {
+                    throw new Error('简历文件加载失败');
+                }
+                const md = await res.text();
+                const html = marked.parse(md);
+                app.innerHTML = `<div class="resume-content">${html}</div>`;
+            } catch (err) {
+                app.innerHTML = `<div class="error">加载失败: ${err.message}<br>请确保已正确配置GitHub Pages</div>`;
+            }
+        }
+        loadResume();
+    </script>
 </body>
 </html>
